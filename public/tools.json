@@ -1,59 +1,62 @@
 [
-    {
-      "name": "Cordless Caulking Gun",
-      "photo": "https://i.ibb.co/wzPSRsf/product-1.png",
-      "price": 130,
-      "quantity": 1000,
-      "minOrder": 10,
-      "description": "A cordless caulking gun is a common, helpful tool used in home repair and construction. It is used to apply beads of caulk for sealing gaps, weatherproofing, and other applications. The gun houses a tube of caulk or sealant that is discharged as pressure is applied to the caulking gun’s handle. Unlike an electric or battery-powered caulking gun, a cordless caulking gun is a manual device that requires no power source.A cordless caulking gun usually has a ratchet rod mechanism that slides down the inner part of a pressurized caulk tube as force is applied on the gun’s lever. The more pressure is applied, the faster the flow of caulk becomes. The main casing of most cordless caulking guns are made of metal to withstand the pressure of the caulk flow.\r\n"
-    },
-    {
-      "name": " Electric Re bar Rolls Tying Machine",
-      "photo": "https://i.ibb.co/mHfc1L0/product-2.png",
-      "price": 50,
-      "quantity": 750,
-      "minOrder": 20,
-      "description": "Wire Roll Spare Parts Matches with WL-400B\r\n"
-    },
-    {
-      "name": "Plastic Paint Scraper Tool ",
-      "photo": "https://i.ibb.co/nC0n1pd/product-3.png",
-      "price": 75,
-      "quantity": 2000,
-      "minOrder": 30,
-      "description": "Wholesale Cheap Hand Plastic Paint Scraper Tool Putty Knife Stainless Steel.\r\n"
-    },
-    {
-      "name": "Tool box",
-      "photo": "https://i.ibb.co/yynVX2h/product-4.png",
-      "price": 300,
-      "quantity": 150,
-      "minOrder": 20,
-      "description": "High quality tool box hard and strong\r\n"
-    },
-    {
-      "name": "78 pieces Hardware tool",
-      "photo": "https://i.ibb.co/WPKFDyD/product-5.png",
-      "price": 250,
-      "quantity": 1250,
-      "minOrder": 20,
-      "description": "Level, digital display pencil, needle-nose pliers, carp pliers, 30pcs batch head set, sleeve connecting rod, sleeve sliding rod,tape measure, claw hammer, 8PC hexagon assembly, Flat-head screwdriver, Phillips screwdriver, sleeve assembly, Utility knife,multi-purpose screwdriver, electrical tape\r\n"
-    },
-    {
-      "name": "Measuring Tool Steel",
-      "photo": "https://i.ibb.co/jrP0Xhy/product-6.png",
-      "price": 350,
-      "quantity": 2500,
-      "minOrder": 20,
-      "description": "Sarker's RSC is focusing on super quality exhaust system parts since 2015 We are very strong in bending pipe process and welding process. Performance  exhaust axle back for benz G55 G65 G 63 G500\r\n"
-    },
-    {
-      "name": "Green trowel floats",
-      "photo": "https://i.ibb.co/JKcVHCq/product-7.png",
-      "price": 150,
-      "quantity": 4400,
-      "minOrder": 20,
-      "description":"MATERIAL:GREEN,SPONGE,FOAM,SIZE:4X12, 5X12,19MM Thick,HANDLE:First Grade PINE WOOD,BLADE:Aluminium,COLOR:Green ,Yellow ,Red, Brown or OEM\r\n"
-    }
-  ]
-  
+  {
+    "name": "Walters Hurst",
+    "description": "The best suppliers in the world always deliver in time. I'm Always satisfied with their works",
+    "photo": "https://i.ibb.co/nP7r4zy/user1.jpg",
+    "ratings": "5"
+  },
+  {
+    "name": "Jessica Branch",
+    "description": "It's a grate pleasure business with them I would like to work with them for ever",
+    "photo": "https://i.ibb.co/dW87cvd/user2.jpg",
+    "ratings": "5"
+  },
+  {
+    "name": "Silvia Oneal",
+    "description": "Fast Delivery Secure Payment System. Very best of luck them for future",
+    "photo": "https://i.ibb.co/m95hDqQ/user3.jpg",
+    "ratings": "5"
+  },
+  {
+    "name": "Elsie Travis",
+    "description": "Tools selling should be nominated for service of the year.",
+    "photo": "https://i.ibb.co/M9P6SWx/user4.jpg",
+    "ratings": "4"
+  },
+  {
+    "name": "Macias Mcknight",
+    "description": "I would like to personally thank you for your outstanding product. I would like to personally thank you for your outstanding product. It really saves me time and effort. tools selling is exactly what our business has been lacking. The best on the net!",
+    "photo": "https://i.ibb.co/vcJfHk5/user5.jpg",
+    "ratings": "5"
+  },
+  {
+    "name": "Gayle Wilder",
+    "description": "I wish I would have thought of it first. Great job, I will definitely be ordering again! I'm good to go. You guys rock!",
+    "photo": "https://i.ibb.co/mh8K5Pk/user6.jpg",
+    "ratings": "5"
+  },
+  {
+    "name": "Anna Patterson",
+    "description": "Without tools selling, we would have gone bankrupt by now. I'm good to go. I would also like to say thank you to all your staff",
+    "photo": "https://i.ibb.co/9r96CYm/user7.jpg",
+    "ratings": "5"
+  },
+  {
+    "name": "Gay Graves",
+    "description": "I would gladly pay over 600 dollars for tools selling. It's incredible",
+    "photo": "https://i.ibb.co/VNxqcst/user8.jpg",
+    "ratings": "5"
+  },
+  {
+    "name": "Goodwin Sampson",
+    "description": "Best. Product. Ever! Thank you for making it painless, pleasant and most of all hassle free! Tools selling has completely surpassed our expectations.",
+    "photo": "https://i.ibb.co/bvST5GS/user9.jpg",
+    "ratings": "5"
+  },
+  {
+    "name": "Clayton Lopez",
+    "description": "Really good. Tools selling is the most valuable business resource we have EVER purchased. Tools selling impressed me on multiple levels.",
+    "photo": "https://i.ibb.co/0htCzrc/user10.jpg",
+    "ratings": "5"
+  }
+]

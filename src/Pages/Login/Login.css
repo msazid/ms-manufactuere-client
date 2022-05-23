@@ -1,0 +1,30 @@
+.logInBG{
+    background-image: url('../../Assets/background/background-2.jpg');
+    height:89vh;
+    background-repeat: no-repeat;
+    background-position: center center ;
+    background-size: cover;
+    background-color: rgba(0,0,0,.3);
+    background-blend-mode: overlay;
+    
+}
+.login{
+    margin: auto;
+    background-color: rgba(0,0,0,.7);
+    border-radius: 15px ;
+    height: 460px;
+}
+.loginBtn{
+    color: wheat !important;
+    border: 2px solid wheat !important;
+}
+
+.loginForm{
+    color: aliceblue !important;
+    background: transparent !important;
+    outline: none !important;
+    border-bottom: 2px solid wheat !important;
+}
+.loginForm::placeholder{
+    color: wheat !important;
+}

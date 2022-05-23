@@ -1,0 +1,8 @@
+.specialOfferBg{
+    background-image: url('../../../Assets/featured/hotdeal.jpg');
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.7);
+    background-blend-mode:overlay ;
+}

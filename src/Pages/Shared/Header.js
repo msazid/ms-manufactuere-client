@@ -1,8 +1,12 @@
+import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
+import auth from '../../Firebase/Firebase.init';
 import './Header.css'
 const Header = () => {
+    const [user] = useAuthState(auth)
     const [menubar, setMenubar] = useState(false);
-
     const changeBackground = () => {
         if (window.scrollY >= 80) {
             setMenubar(true)
@@ -12,6 +16,9 @@ const Header = () => {
         }
     }
     window.addEventListener('scroll', changeBackground)
+    const handleSignOut = () =>{
+        signOut(auth);
+    }
     return (
         <nav class={menubar ? "navbar sticky-top headerScroll active navbar-expand-lg":"navbar sticky-top headerScroll navbar-expand-lg navbar-light "}>
             <div class="container">
@@ -22,24 +29,25 @@ const Header = () => {
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class={menubar ? "nav-link text-dark":"nav-link  active"} aria-current="page" href="#">Home</a>
+                            <Link to='/' class={menubar ? "nav-link text-dark":"nav-link  active"} aria-current="page" href="#">Home</Link>
                         </li>
-                        <li class="nav-item">
-                            <a class={menubar ? "nav-link text-dark":"nav-link active"} href="#">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class={menubar ? "nav-link text-dark":"nav-link active"} href="#">Pricing</a>
-                        </li>
-                        <li class="nav-item dropdown">
+                      {
+                          user ? (
+                            <li class="nav-item dropdown">
                             <a class={menubar ? "nav-link text-dark dropdown-toggle":"nav-link active dropdown-toggle"} href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown link
+                                Profile
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><p class="dropdown-item">Display Name</p></li>
+                                <li><button class="dropdown-item" onClick={handleSignOut} href="#">Sign Out</button></li>
                             </ul>
                         </li>
+                          ):(
+                        <li class="nav-item">
+                            <Link to='/login' class={menubar ? "nav-link text-dark":"nav-link  active"} aria-current="page" href="#">Login</Link>
+                        </li>
+                          )
+                      }
                     </ul>
                 </div>
             </div>
