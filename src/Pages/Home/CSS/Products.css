@@ -1,0 +1,29 @@
+.section-title{
+    color: #000;
+    font-size: 45px;
+    font-family: 'lato';
+    font-weight: 700;
+}
+.product-section{
+    background-color:#EFEFEF ;
+}
+.tools{
+    border: 1px solid #e9e9e9;
+    text-align: center;
+    padding: 1rem;
+}
+
+.tools-img{
+    height: 250px;
+}
+
+.tools-img>img {
+    border-radius: 0;
+    max-height: 150px !important;
+    max-width: 150px !important;
+}
+.text-1{
+    font-family: 'lato';
+    font-weight: 700;
+
+}
