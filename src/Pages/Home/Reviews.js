@@ -1,29 +1,40 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import useReviews from '../../Hooks/useReviews';
+import React from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
 import './CSS/reviews.css'
+import useReviews from "../../Hooks/useReviews";
 const Reviews = () => {
     const [reviews] = useReviews()
     return (
-        <div className='my-5'>
-            <h1 className='mt-3' style={{ fontFamily: 'lato', textTransform: 'uppercase', textAlign: 'center' }}>Some Of Our Top Customer's Reviews</h1>
-            <div className='py-3 container d-flex flex-wrap justify-content-center'>
-                {
-                    reviews.slice(0, 3).map(review =>
+     <div className="container">
+         <h1>Our Customers Reviews</h1>
+            <Carousel
+        showArrows={true}
+        infiniteLoop={true}
+        showThumbs={false}
+        showStatus={false}
+        autoPlay={true}
+        interval={6100}
+      >
+          {
+              reviews.map(review=>
+            <div>
+                <img src={review.photo} alt='userPic'/>
+                <div className="myCarousel">
+                  <h3>{review.name}</h3>
+                  <h4>Customer</h4>
+                  <p>
+                    {review.description}
+                  </p>
+                </div>
+              </div>
+                
+                )
+          }
 
-                        <figure class="reviewCard">
-                            <blockquote>{review.description}</blockquote>
-                            <div class="author">
-                                <img src={review.photo} alt="sq-sample1" />
-                                <h5 className='text-dark'>{review.name} <span> Customer</span></h5>
-                            </div>
-                        </figure>
+      </Carousel>
+     </div>
                     )
-                }
-            </div>
-            <Link to='/allreviews' style={{textDecoration:'none',textAlign:'center',display:'block',fontFamily:'lato',textTransform:'uppercase',color:'orange'}}>Show More Reviews</Link>
-        </div>
-    );
-};
+    }
 
 export default Reviews;

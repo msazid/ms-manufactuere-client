@@ -1,77 +1,128 @@
-@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
-figure.reviewCard {
-  font-family: 'Raleway', Arial, sans-serif;
-  position: relative;
-  overflow: hidden;
-  margin: 10px;
-  min-width: 220px;
-  max-width: 310px;
-  width: 100%;
-  color: #333;
-  text-align: left;
-  box-shadow: none !important;
+.carousel-root {
+  width: 64% !important;
+  margin: auto !important;
+  margin-top: 3% !important;
 }
-figure.reviewCard * {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-figure.reviewCard img {
-  max-width: 100%;
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  margin-bottom: 15px;
-  display: inline-block;
-  z-index: 1;
-  position: relative;
-}
-figure.reviewCard blockquote {
-  margin: 0;
-  display: block;
-  border-radius: 8px;
-  position: relative;
-  background-color: #fafafa;
-  padding: 30px 50px 65px 50px;
-  font-size: 0.8em;
-  font-weight: 500;
-  margin: 0 0 -50px;
-  line-height: 1.6em;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-}
-figure.reviewCard blockquote:before,
-figure.reviewCard blockquote:after {
-  font-family: 'FontAwesome';
-  content: "\201C";
-  position: absolute;
-  font-size: 50px;
-  opacity: 0.3;
-  font-style: normal;
-}
-figure.reviewCard blockquote:before {
-  top: 35px;
-  left: 20px;
-}
-figure.reviewCard blockquote:after {
-  content: "\201D";
-  right: 20px;
-  bottom: 35px;
-}
-figure.reviewCard .author {
-  margin: 0;
-  text-transform: uppercase;
-  text-align: center;
-  color: #ffffff;
-}
-figure.reviewCard .author h5 {
-  opacity: 0.8;
-  margin: 0;
-  font-weight: 800;
-}
-figure.reviewCard .author h5 span {
-  font-weight: 400;
-  text-transform: none;
-  display: block;
-}
-/* Demo purposes only */
 
+.carousel .slide {
+  background: #fff !important;
+  color: black;
+  height: 100%;
+}
+
+.carousel .slide img {
+  width: 139px !important;
+  border-radius: 50%;
+}
+
+.myCarousel {
+  background: #fafafa;
+  margin-top: -6%;
+  width: 54%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 6%;
+  padding-bottom: 8%;
+  padding-left: 5%;
+  padding-right: 5%;
+  border: 1px solid #ddd;
+  height: 286px;
+}
+
+.carousel .control-dots {
+  padding-left: 5px !important;
+  outline: 0;
+  bottom: 5% !important;
+}
+
+.myCarousel h3 {
+  color: #222;
+  font-weight: 100;
+  letter-spacing: 0.2px;
+  margin-bottom: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 17px;
+}
+
+.myCarousel h4 {
+  text-transform: uppercase;
+  margin-top: 0;
+  padding-top: 0;
+  font-weight: 500;
+  color: #787878;
+  font-size: 14px;
+}
+
+.myCarousel p {
+  font-weight: 100 !important;
+  line-height: 29px !important;
+  color: #222;
+  font-size: 15px;
+  font-family: sans-serif;
+  max-height: 67px;
+}
+
+.myCarousel p:before {
+  content: "“";
+  color: #aaa;
+  font-size: 26px;
+  font-family: monospace;
+  font-weight: 100;
+}
+
+.myCarousel p:after {
+  content: "”";
+  color: #aaa;
+  font-size: 26px;
+  font-family: monospace;
+  font-weight: 100;
+  line-height: 0;
+}
+
+.carousel .control-dots .dot {
+  box-shadow: none !important;
+  background: #454545 !important;
+  outline: 0;
+}
+
+.carousel.carousel-slider .control-arrow {
+  background: #000 !important;
+  height: 50px !important;
+  position: absolute;
+  top: 35% !important;
+}
+
+.App {
+  text-align: center;
+}
+
+@media only screen and (max-width: 934px) {
+  .carousel-root {
+    outline: 0;
+    width: 93% !important;
+    margin: auto !important;
+  }
+
+  .carousel.carousel-slider .control-arrow {
+    display: none !important;
+  }
+  .myCarousel {
+    background: #fafafa;
+    margin-top: -9%;
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 8%;
+    padding-bottom: 12.5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: 1px solid #ddd;
+    height: 269px;
+  }
+
+  .carousel .slide img {
+    width: 24% !important;
+    border-radius: 50%;
+  }
+}

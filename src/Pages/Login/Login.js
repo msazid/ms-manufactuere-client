@@ -13,10 +13,10 @@ const Login = () => {
         loading,
         error,
       ] = useSignInWithEmailAndPassword(auth);
-      const [signInWithGoogle, guser, gLoading, gerror] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, guser, gLoading, gerror] = useSignInWithGoogle(auth);
     const { register, handleSubmit } = useForm();
     const [sendPasswordResetEmail , sending] = useSendPasswordResetEmail(auth);
-    if(loading || gLoading){
+    if(loading || gLoading || sending){
         return <Loading/>
     }
     const onSubmit = data =>{

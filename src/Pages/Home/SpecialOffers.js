@@ -29,7 +29,7 @@ const SpecialOffers = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-6">
-                            <ul>
+                            <ul className='text-start'>
                                 <li style={{color:'#EAFBEA',fontFamily:'lato',fontSize:'25px',fontWeight:'700',textTransform:'uppercase'}}>Free Shipping</li>
                                 <li style={{color:'#EAFBEA',fontFamily:'lato',fontSize:'25px',fontWeight:'700',textTransform:'uppercase'}}>About 35% Discounts</li>
                                 <li style={{color:'#EAFBEA',fontFamily:'lato',fontSize:'25px',fontWeight:'700',textTransform:'uppercase'}}>Lifetime membership</li>

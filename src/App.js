@@ -8,8 +8,11 @@ import Header from './Pages/Shared/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TopBar from './Pages/Shared/TopBar';
 import ProductDetail from './Pages/Home/ProductDetail';
-import ReviewForm from './Pages/Home/ReviewForm';
 import AllReviews from './Pages/AllReviews/AllReviews';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import MyOrders from './Pages/Dashboard/MyOrders';
+import AddReview from './Pages/Dashboard/AddReview';
+import MyProfile from './Pages/Dashboard/MyProfile';
 
 function App() {
   return (
@@ -22,8 +25,15 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/productDetail/:id' element={<ProductDetail/>}/>
           <Route path='/register' element={<Register/>}/>
-          <Route path='/additem' element={<ReviewForm/>}/>
           <Route path='/allreviews' element={<AllReviews/>}/>
+
+          <Route path='/dashboard' element={<Dashboard/>}>
+            <Route index element={<MyOrders/>}></Route>
+            <Route path='addreview' element={<AddReview/>}></Route>
+            <Route path='profile' element={<MyProfile/>}></Route>
+          </Route>
+
+          
       </Routes>
     </div>
   );
