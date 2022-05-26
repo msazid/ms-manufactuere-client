@@ -13,6 +13,9 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import MyOrders from './Pages/Dashboard/MyOrders';
 import AddReview from './Pages/Dashboard/AddReview';
 import MyProfile from './Pages/Dashboard/MyProfile';
+import Payment from './Pages/Dashboard/Payment';
+import RequireAuth from './Pages/Login/RequireAuth';
+import AllUsers from './Pages/Dashboard/AllUsers';
 
 function App() {
   return (
@@ -27,10 +30,12 @@ function App() {
           <Route path='/register' element={<Register/>}/>
           <Route path='/allreviews' element={<AllReviews/>}/>
 
-          <Route path='/dashboard' element={<Dashboard/>}>
-            <Route index element={<MyOrders/>}></Route>
+          <Route path='/dashboard' element={<RequireAuth><Dashboard/></RequireAuth>}>
+            <Route path='myorders' element={<MyOrders/>}></Route>
             <Route path='addreview' element={<AddReview/>}></Route>
-            <Route path='profile' element={<MyProfile/>}></Route>
+            <Route index element={<MyProfile/>}></Route>
+            <Route path='payment/:id' element={<Payment/>}></Route>
+            <Route path='allUsers' element={<AllUsers></AllUsers>}></Route>
           </Route>
 
           

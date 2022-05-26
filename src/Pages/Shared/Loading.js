@@ -3,11 +3,11 @@ import './Loading.css'
 const Loading = () => {
     return (
         <div className='d-flex align-items-center justify-content-center'>
-            <div class="jelly-triangle">
-                <div class="jelly-triangle__dot"></div>
-                <div class="jelly-triangle__traveler"></div>
+            <div className="jelly-triangle">
+                <div className="jelly-triangle__dot"></div>
+                <div className="jelly-triangle__traveler"></div>
             </div>
-            <svg width="0" height="0" class="jelly-maker">
+            <svg width="0" height="0" className="jelly-maker">
                 <defs>
                     <filter id="uib-jelly-triangle-ooze">
                         <feGaussianBlur in="SourceGraphic" stdDeviation="7.3" result="blur"></feGaussianBlur>

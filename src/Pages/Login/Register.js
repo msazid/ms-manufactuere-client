@@ -1,11 +1,13 @@
 import React from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import auth from '../../Firebase/Firebase.init';
 import Loading from '../Shared/Loading';
 
 const Register = () => {
+    const navigate = useNavigate()
     const { register, handleSubmit } = useForm();
     const [signInWithGoogle, guser, gLoading, gerror] = useSignInWithGoogle(auth);
     const [
@@ -14,12 +16,22 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    if(user || guser){
+        navigate('/')
+    }
     if (loading || gLoading) {
         return <Loading />
     }
+    if(error||gerror){
+        Swal.fire({
+            icon:'error',
+            title:'Something Wents wrong',
+            text:`${error.message || gerror.message}`
+        })
+    }
     const onSubmit = data => {
         console.log(data.displayName, data.email, data.password)
-        createUserWithEmailAndPassword(data.email,data.password);
+        createUserWithEmailAndPassword(data.email, data.password);
     };
     return (
         <div className='logInBG d-flex align-items-center'>
@@ -32,7 +44,7 @@ const Register = () => {
                     <input className='btn loginBtn' type="submit" value='Register' />
                 </form>
                 <Link to='/login' style={{ textDecoration: 'none', color: 'wheat' }}>Login Here</Link> <br />
-                <p style={{ color: "wheat" }} class="w-100 my-3 text-center">&mdash; Or Sign In With &mdash;</p>
+                <p style={{ color: "wheat" }} className="w-100 my-3 text-center">&mdash; Or Sign In With &mdash;</p>
                 <button className='py-2 px-3' onClick={() => signInWithGoogle()} style={{ color: "wheat", background: 'transparent', border: '2px solid' }}>Sign In With Google</button>
             </div>
         </div>
