@@ -53,7 +53,7 @@ const MyOrders = () => {
                                 <td>{order.quantity}</td>
                                 <td>{(order.totalPrice && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-warning btn-sm'>Pay</button></Link>}
                                     {(order.totalPrice && order.paid) && <div>
-                                        <p><span className='text-success border border-success p-1'>Paid</span></p>
+                                        <p><span className='btn btn-secondary btn-sm disabled p-1'>Paid</span></p>
                                     </div>}</td>
                                 <td>
                                     {(order.totalPrice && !order.paid) &&
@@ -85,10 +85,10 @@ const MyOrders = () => {
                                                         })
                                                 }
                                             })
-                                        }} type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                        }} type="button" className="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal">
                                             Cancel
                                         </button>}
-                                    {(order.totalPrice && order.paid) && <button disabled className='btn btn-primary'>Cancel</button>}
+                                    {(order.totalPrice && order.paid) && <button disabled className='btn btn-secondary btn-sm disabled'>Cancel</button>}
                                 </td>
                             </tr>)
                         }
