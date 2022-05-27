@@ -1,26 +1,26 @@
 import { useEffect, useState } from "react"
 
-const useToken = user =>{
-    const [token,setToken] = useState('');
-    useEffect(()=>{
+const useToken = user => {
+    const [token, setToken] = useState('');
+    useEffect(() => {
         const email = user?.user?.email;
-        const currentEmail = {email:email};
-        if(email){
-            fetch(`http://localhost:5000/users/${email}`,{
-                method:'PUT',
-                headers:{
-                    'content-type':'application/json'
+        const currentEmail = { email: email };
+        if (email) {
+            fetch(`https://ms-management124.herokuapp.com/users/${email}`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
                 },
-                body:JSON.stringify(currentEmail)
+                body: JSON.stringify(currentEmail)
             })
-            .then(res=>res.json())
-            .then(data=>{
-             const accessToken = data.token; 
-             localStorage.setItem('accessToken',accessToken);
-             setToken(accessToken);
-            })
+                .then(res => res.json())
+                .then(data => {
+                    const accessToken = data.token;
+                    localStorage.setItem('accessToken', accessToken);
+                    setToken(accessToken);
+                })
         }
-    },[user]);
-    return[token];
+    }, [user]);
+    return [token];
 }
-export default useToken ;
+export default useToken;

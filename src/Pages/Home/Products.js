@@ -28,6 +28,7 @@ const Products = () => {
                                             <span style={{ fontSize: '25px', fontFamily: 'lato', color: '#FF7700' }}> {tool.price}$</span> <br />
                                         </p>
                                     </div>
+                                    <button className='btn btn-dark' onClick={() => navigateToPage(tool._id)}>Product Detail</button>
                                 </div>
                             </div>)
                     }

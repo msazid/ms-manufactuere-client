@@ -11,27 +11,27 @@ const stripePromise = loadStripe('pk_test_51L3b7WIe5Ii0QIqSl7dL4wwVAUsGmhH1Csawe
 const Payment = () => {
     const { id } = useParams();
     // const [order, setOrder] = useState([])
-    // const url = `http://localhost:5000/ordered/${id}`
+    // const url = `https://ms-management124.herokuapp.com/ordered/${id}`
     // useEffect(() => {
     //     fetch(url)
     //         .then(res => res.json())
     //         .then(data => setOrder(data))
     // }, [url])
-    const { data: order, isLoading, error, refetch } = useQuery(['order',id], () =>
-        fetch(`http://localhost:5000/orders/${id}`)
+    const { data: order, isLoading, error, refetch } = useQuery(['order', id], () =>
+        fetch(`https://ms-management124.herokuapp.com/orders/${id}`)
             .then(res => res.json())
     )
     if (isLoading) {
         return <Loading />
     }
-    if(error){
+    if (error) {
         Swal({
-            icon:'error',
-            title:'Somethings wents wrong',
-            text:`${error}`
+            icon: 'error',
+            title: 'Somethings wents wrong',
+            text: `${error}`
         })
     }
-//    console.log(order);
+    //    console.log(order);
     return (
         <div className='container'>
             <h5 className='text-info'>Please Pay For: {id}</h5>
@@ -42,7 +42,7 @@ const Payment = () => {
             </div>
             <div className="card">
                 <Elements stripe={stripePromise}>
-                    <CheckoutForm order={order}/>
+                    <CheckoutForm order={order} />
                 </Elements>
             </div>
         </div>

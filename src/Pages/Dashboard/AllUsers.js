@@ -3,68 +3,61 @@ import Swal from 'sweetalert2';
 import Loading from '../Shared/Loading';
 
 const AllUsers = () => {
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/users').then(res => res.json()))
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://ms-management124.herokuapp.com/users').then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>
     }
     return (
         <div>
-            <h1>{users.length}</h1>
-            <table class="table">
-                <thead className='table-dark'>
-                    <tr>
-                        <th scope="col">SL</th>
-                        <th scope="col">User Email</th>
-                        <th scope="col">Make Admin</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        users.map((user, index) =>
-                            <tr>
-                                <th scope="row">{index + 1}</th>
-                                <td className=' w-50'>{user.email}</td>
-                                <td>
-                                    {user.role !== 'admin' && <button className='btn btn-sm btn-success'
-                                        onClick={() => {
-                                            fetch(`http://localhost:5000/users/admin/${user.email}`, {
-                                                method: 'PUT',
-                                                headers: {
-                                                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                                                }
-                                            })
-                                                .then(res => {
-                                                    if (res.status === 403) {
-                                                        Swal.fire({
-                                                            icon: 'error',
-                                                            text: 'Failed to Make an admin !'
-                                                        })
-                                                    }
-                                                    return res.json()
+            {
+                users.map((user, index) =>
+                    <div class="card text-center my-5">
+                        <div class="card-header">
+                            {user.role === 'admin' && <p>Id user already an admin</p>}
+                            {user.role !== 'admin' && <p>Make this user an admin ?</p>}
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title my-3">{user.email}</h5>
+                            {user.role !== 'admin' && <button className='btn btn-sm btn-success'
+                                onClick={() => {
+                                    fetch(`https://ms-management124.herokuapp.com/users/admin/${user.email}`, {
+                                        method: 'PUT',
+                                        headers: {
+                                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                                        }
+                                    })
+                                        .then(res => {
+                                            if (res.status === 403) {
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    text: 'Failed to Make an admin !'
                                                 })
-                                                .then(data => {
-                                                    refetch()
-                                                    if (data.modifiedCount > 0) {
-                                                        Swal.fire({
-                                                            icon: 'success',
-                                                            text: 'Successfully made an admin'
-                                                        })
-                                                        
-                                                    }
+                                            }
+                                            return res.json()
+                                        })
+                                        .then(data => {
+                                            refetch()
+                                            if (data.modifiedCount > 0) {
+                                                Swal.fire({
+                                                    icon: 'success',
+                                                    text: 'Successfully made an admin'
                                                 })
-                                        }}
-                                    >Make Admin</button>}
-                                    {user.role === 'admin' && <button className='btn btn-secondary btn-sm disabled' disabled>Make Admin</button>}
-                                </td>
-                            </tr>
 
-                        )
-                    }
-                </tbody>
-            </table>
+                                            }
+                                        })
+                                }}
+                            >Make Admin</button>}
+                            {user.role === 'admin' && <button className='btn btn-secondary btn-sm disabled' disabled>Already Admin</button>}
+                        </div>
+                    </div>
+
+                )
+            }
         </div>
     );
 };
+
+
 
 export default AllUsers;

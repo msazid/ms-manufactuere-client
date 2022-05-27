@@ -17,7 +17,7 @@ const AddReview = () => {
 
             const data = { ratings, userName, description, itemName }
             console.log(data);
-            const url = 'http://localhost:5000/review';
+            const url = 'https://ms-management124.herokuapp.com/review';
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -29,17 +29,17 @@ const AddReview = () => {
                 .then((result) => {
                     console.log(result);
                 });
-          Swal.fire({
-              icon:'success',
-              title:'Congrats',
-              text:'Your review have been saved'
-          })
+            Swal.fire({
+                icon: 'success',
+                title: 'Congrats',
+                text: 'Your review have been saved'
+            })
             e.target.reset()
         } else {
             Swal.fire({
-                icon:'error',
-                title:'Somethings wents wrong !',
-                text:'Enter rating between 1 to  5'
+                icon: 'error',
+                title: 'Somethings wents wrong !',
+                text: 'Enter rating between 1 to  5'
             })
         }
 

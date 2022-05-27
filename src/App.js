@@ -19,6 +19,10 @@ import AllUsers from './Pages/Dashboard/AllUsers';
 import RequireAdmin from './Pages/Login/RequireAdmin';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import ManageAllOrder from './Pages/Dashboard/ManageAllOrder';
+import ManageItem from './Pages/Dashboard/ManageItem';
+import AllItems from './Pages/AllItems/AllItems';
+import Blogs from './Pages/Blogs/Blogs';
+import Footer from './Pages/Shared/Footer';
 
 function App() {
   return (
@@ -29,10 +33,11 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='*' element={<NotFound/>}/>
           <Route path='/login' element={<Login/>}/>
-          <Route path='/productDetail/:id' element={<ProductDetail/>}/>
+          <Route path='/productDetail/:id' element={<RequireAuth><ProductDetail/></RequireAuth>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/allreviews' element={<AllReviews/>}/>
-
+          <Route path='/showAllItems' element={<AllItems/>}></Route>
+          <Route path='/blogs' element={<Blogs/>}></Route>
           <Route path='/dashboard' element={<RequireAuth><Dashboard/></RequireAuth>}>
             <Route path='myorders' element={<MyOrders/>}></Route>
             <Route path='addreview' element={<AddReview/>}></Route>
@@ -41,8 +46,11 @@ function App() {
             <Route path='allUsers' element={<RequireAdmin><AllUsers></AllUsers></RequireAdmin>}></Route>
             <Route path='addProduct' element={<RequireAdmin><AddProduct/></RequireAdmin>}></Route>
             <Route path='manageAllOrders' element={<RequireAdmin><ManageAllOrder/></RequireAdmin>}></Route>
+            <Route path='manageItems' element={<RequireAdmin><ManageItem/></RequireAdmin>}></Route>
           </Route>
       </Routes>
+
+      <Footer/>
     </div>
   );
 }

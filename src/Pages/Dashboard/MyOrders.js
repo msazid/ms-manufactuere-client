@@ -11,25 +11,26 @@ const MyOrders = () => {
     const [user] = useAuthState(auth)
     const navigate = useNavigate()
     useEffect(() => {
-       if(user){
-        fetch(`http://localhost:5000/ordering?email=${user?.email}`, {
-            method: 'GET',
-            headers:{
-                'authorization':`Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => {
-                console.log('res', res);
-                if (res.status === 401 || res.status === 403) {
-                    signOut(auth);
-                    localStorage.removeItem('accessToken');
-                    navigate('/');
+        if (user) {
+            fetch(`https://ms-management124.herokuapp.com/ordering?email=${user?.email}`, {
+                method: 'GET',
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 }
-                return res.json()})
-            .then(data => { setOrders(data)})
-       }
+            })
+                .then(res => {
+                    console.log('res', res);
+                    if (res.status === 401 || res.status === 403) {
+                        signOut(auth);
+                        localStorage.removeItem('accessToken');
+                        navigate('/');
+                    }
+                    return res.json()
+                })
+                .then(data => { setOrders(data) })
+        }
     }
-        , [user,navigate])
+        , [user, navigate])
     console.log(orders);
     return (
         <>
@@ -53,40 +54,40 @@ const MyOrders = () => {
                                 <td>{(order.totalPrice && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-warning btn-sm'>Pay</button></Link>}
                                     {(order.totalPrice && order.paid) && <div>
                                         <p><span className='text-success border border-success p-1'>Paid</span></p>
-                                    </div> }</td>
+                                    </div>}</td>
                                 <td>
-                                {(order.totalPrice && !order.paid) &&
-                                <button onClick={(id) => {
-                                        console.log(order.productName);
-                                        Swal.fire({
-                                            title: 'Are you sure?',
-                                            text: "You won't be able to revert this!",
-                                            icon: 'warning',
-                                            showCancelButton: true,
-                                            confirmButtonColor: '#3085d6',
-                                            cancelButtonColor: '#d33',
-                                            confirmButtonText: 'Yes, delete it!'
-                                        }).then((result) => {
-                                            if (result.isConfirmed) {
-                                                Swal.fire(
-                                                    'Deleted!',
-                                                    'Your file has been deleted.',
-                                                    'success'
-                                                )
-                                                fetch(`http://localhost:5000/orders/${order._id}`, {
-                                                    method: 'DELETE',
-                                                    headers: {
-                                                        "content-type": 'application/json'
-                                                    },
-                                                }).then(res => res.json())
-                                                    .then(data => {
-                                                        orders.filter(data => data?._id !== id)
-                                                    })
-                                            }
-                                        })
-                                    }} type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                        Cancel
-                                    </button>}
+                                    {(order.totalPrice && !order.paid) &&
+                                        <button onClick={(id) => {
+                                            console.log(order.productName);
+                                            Swal.fire({
+                                                title: 'Are you sure?',
+                                                text: "You won't be able to revert this!",
+                                                icon: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonColor: '#3085d6',
+                                                cancelButtonColor: '#d33',
+                                                confirmButtonText: 'Yes, delete it!'
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    Swal.fire(
+                                                        'Deleted!',
+                                                        'Your file has been deleted.',
+                                                        'success'
+                                                    )
+                                                    fetch(`https://ms-management124.herokuapp.com/orders/${order._id}`, {
+                                                        method: 'DELETE',
+                                                        headers: {
+                                                            "content-type": 'application/json'
+                                                        },
+                                                    }).then(res => res.json())
+                                                        .then(data => {
+                                                            orders.filter(data => data?._id !== id)
+                                                        })
+                                                }
+                                            })
+                                        }} type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                            Cancel
+                                        </button>}
                                     {(order.totalPrice && order.paid) && <button disabled className='btn btn-primary'>Cancel</button>}
                                 </td>
                             </tr>)

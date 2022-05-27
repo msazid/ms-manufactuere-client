@@ -6,7 +6,7 @@ const ManageOrder = ({ order, index, refetch, setCancelModal }) => {
 
     const updateProduct = (id) => {
 
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`https://ms-management124.herokuapp.com/orders/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -20,58 +20,58 @@ const ManageOrder = ({ order, index, refetch, setCancelModal }) => {
 
     }
     return (
-            <tr key={index}>
-                <th scope="row">{index + 1}</th>
-                <td>{email}</td>
-                <td>{productName}</td>
-                <td>{quantity}</td>
-                <td>{!paid && <p className='text-warning text-uppercase fw-bold'>unpaid</p>}
-                {paid && <>
-                    <p className='text-success text-uppercase fw-bold'>Paid</p>
-                </>}
-            </td>
-            <td> {
-                paid ? <>
+        <div class="card text-center mb-3">
+            <div class="card-header bg-light border-none">
+                <span className="fw-bold">Product Id:</span> {_id}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><span className='text-uppercase me-2'>User Email:</span> {email}</h5>
+                <h5 class="card-title"><span className='text-uppercase me-2'>Product Name:</span> {productName}</h5>
+                <p class="card-text"><span className='text-uppercase me-2'>Ordered Quantity:</span>{quantity}</p>
+                <p class="card-text">
                     {
-                        order.status ? <p className='text-success text-uppercase fw-bold'>Shipped</p> : <button className="btn btn-xs btn-primary" onClick={() => updateProduct(_id)}>Change status</button>
+                        paid ? <>
+                            {
+                                order.status ? <p className='text-success text-uppercase fw-bold'><span className='text-uppercase me-2 text-dark'>Product Status:</span> Shipped</p> : <button className="btn btn-xs btn-primary" onClick={() => updateProduct(_id)}>Change status</button>
+                            }
+                        </> : <p className='text-warning  fw-bold'>Pending.....</p>
                     }
-                </> : <p className='text-warning  fw-bold'>Pending.....</p>
-            }
-            </td>
-                <td> <button disabled={paid} onClick={(id) => {
-                                        console.log(order.productName);
-                                        Swal.fire({
-                                            title: 'Are you sure?',
-                                            text: "You won't be able to revert this!",
-                                            icon: 'warning',
-                                            showCancelButton: true,
-                                            confirmButtonColor: '#3085d6',
-                                            cancelButtonColor: '#d33',
-                                            confirmButtonText: 'Yes, delete it!'
-                                        }).then((result) => {
-                                            if (result.isConfirmed) {
-                                                Swal.fire(
-                                                    'Deleted!',
-                                                    'Your file has been deleted.',
-                                                    'success'
-                                                )
-                                                fetch(`http://localhost:5000/orders/${_id}`, {
-                                                    method: 'DELETE',
-                                                    headers: {
-                                                        "content-type": 'application/json'
-                                                    },
-                                                }).then(res => res.json())
-                                                    .then(data => {
-                                                        refetch();
-                                                        order.filter(data => data?._id !== id)
-                                                        
-                                                    })
-                                            }
-                                        })
-                                    }} type="button" className="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                                        Cancel
-                                    </button></td>
-            </tr>
+                </p>
+                <button disabled={paid} onClick={(id) => {
+                    console.log(order.productName);
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            fetch(`https://ms-management124.herokuapp.com/orders/${_id}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    "content-type": 'application/json'
+                                },
+                            }).then(res => res.json())
+                                .then(data => {
+                                    refetch();
+                                    order.filter(data => data?._id !== id)
+
+                                })
+                        }
+                    })
+                }} type="button" className="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                    Cancel
+                </button>
+            </div>
+        </div>
     );
 };
 

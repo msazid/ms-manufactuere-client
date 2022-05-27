@@ -32,6 +32,12 @@ const Header = () => {
                         <li className="nav-item">
                             <Link to='/'className={menubar ? "nav-link text-dark" : "nav-link  active"} aria-current="page" href="#">Home</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to='/showAllItems'className={menubar ? "nav-link text-dark" : "nav-link  active"} aria-current="page" href="#">All Items</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to='/blogs'className={menubar ? "nav-link text-dark" : "nav-link  active"} aria-current="page" href="#">Blogs</Link>
+                        </li>
                         {
                             user ? (
                                 <li className="nav-item dropdown">

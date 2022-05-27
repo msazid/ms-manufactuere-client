@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase.init';
 import Loading from '../Shared/Loading';
+import Swal from 'sweetalert2';
 
 
 const ProductDetail = () => {
@@ -12,7 +13,7 @@ const ProductDetail = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/item/${id}`)
+        fetch(`https://ms-management124.herokuapp.com/item/${id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -48,7 +49,7 @@ const ProductDetail = () => {
         console.log(ordered);
         if (data.target.quantity.value <= item.quantity || data.target.quantity.value >= item.minOrder) {
 
-            fetch('http://localhost:5000/orders', {
+            fetch('https://ms-management124.herokuapp.com/orders', {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
@@ -62,7 +63,7 @@ const ProductDetail = () => {
                         alert('Booked successfully');
                     }
                 })
-            fetch(`http://localhost:5000/item/${id}`, {
+            fetch(`https://ms-management124.herokuapp.com/item/${id}`, {
                 method: 'PUT',
                 headers: {
                     "content-type": 'application/json'
@@ -71,6 +72,10 @@ const ProductDetail = () => {
             }).then(res => res.json())
                 .then(data => {
                     setItem(newQuantity)
+                    Swal.fire({
+                        icon: 'success',
+                        text: 'Your Order successfully added please Check in to dashboard'
+                    })
                 })
         }
     };
@@ -78,29 +83,31 @@ const ProductDetail = () => {
         <div>
             <div className="container ">
                 <div className="row my-5 py-3">
+                    <h1 className='mb-4' style={{ fontFamily: 'lato', textAlign: 'center', fontSize: '30px', color: 'orange', textTransform: 'uppercase' }}>Product Detail</h1>
                     <div className="col-12 col-md-12 col-lg-6 d-flex align-items-center justify-content-center ">
                         <img src={item.photo} className="w-50" alt="" />
                     </div>
                     <div className="col-12 col-md-12 col-lg-6 py-3">
-                        <h1 style={{ fontFamily: 'lato', textAlign: 'center', fontSize: '20px', color: 'orange', textTransform: 'uppercase' }}>Product Detail</h1>
-                        <h1 style={{ fontFamily: 'lato', fontSize: '15px', textTransform: 'uppercase' }}><strong>Product Name:</strong>  {item.name}</h1>
+                        <h1 style={{ textAlign: 'start', fontFamily: 'lato', fontSize: '22px', textTransform: 'uppercase' }}><strong>Product Name:</strong>  {item.name}</h1>
                         <h1 style={{ textAlign: 'start', fontFamily: 'lato', fontSize: '25px', textTransform: 'uppercase' }}><strong>Price:</strong>  ${item.price} </h1>
                         <p className='card-text  text-start'><strong className='text-uppercase'>Available Quantity:</strong> {item.quantity}</p>
-                        <p className='card-text  text-start'><strong className='text-uppercase'>Product:</strong> <br /> {item.description}</p>
+                        <p className='card-text  text-start'><strong className='text-uppercase'>Product Description:</strong> <br /> {item.description}</p>
                         <p className='card-text  text-start text-uppercase'><strong style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}>Minimum Order:</strong>  {item.minOrder}</p>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-12 col-md-12 col-lg-6">
+
+                    <div className="col-12 col-md-8 mx-auto">
+                        <h1 className='mb-4' style={{ fontFamily: 'lato', textAlign: 'center', fontSize: '30px', color: 'orange', textTransform: 'uppercase' }}>Order This product</h1>
                         <form onSubmit={onSubmit}>
-                            <input className="form-control" type="email" name='email' readOnly value={user?.email} />
-                            <input className="form-control" type="text" name='productName' readOnly value={item.name} />
-                            <input className="form-control" type="number" name='price' readOnly value={item.price} />
-                            <input className="form-control" type="number" name='quantity' placeholder="enter your product quantity" />
-                            <input className="form-control" type="text" name='name' placeholder="enter your name" />
-                            <textarea className="form-control" type="text" name='address' placeholder="address" />
-                            <input className="form-control" type="number" name='phone' placeholder="phone number" />
-                            <input type="submit" value='Buy now' />
+                            <input className="form-control  mb-3 p-2 " type="email" name='email' readOnly value={user?.email} />
+                            <input className="form-control  mb-3 p-2 " type="text" name='productName' readOnly value={item.name} />
+                            <input className="form-control  mb-3 p-2 " type="number" name='price' readOnly value={item.price} />
+                            <input className="form-control  mb-3 p-2 " type="number" name='quantity' placeholder="enter your product quantity" />
+                            <input className="form-control  mb-3 p-2 " type="text" name='name' placeholder="enter your name" />
+                            <textarea className="form-control  mb-3 p-2 " type="text" name='address' placeholder="address" />
+                            <input className="form-control mb-3 p-2 " type="number" name='phone' placeholder="phone number" />
+                            <input type="submit" className='btn btn-success' value='Order Now' />
                         </form>
 
                     </div>

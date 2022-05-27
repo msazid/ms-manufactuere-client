@@ -9,8 +9,8 @@ const Dashboard = () => {
     const [admin] = useAdmin(user);
     return (
         <div>
-            <div className='border d-flex justify-content-end me-2'>
-                <button className="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Options</button>
+            <div className=' d-flex justify-content-end mt-2 me-2'>
+                <button className="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Check More Options</button>
             </div>
             <div className="container">
                 <h2 style={{fontSize:'30px',textTransform:'uppercase',fontFamily:'lato',color:"orange"}}>Welcome To Dashboard</h2>
@@ -33,6 +33,7 @@ const Dashboard = () => {
                          <p> <Link className='nav-link text-primary fw-bold text-uppercase' to='/dashboard/allUsers'>All Users</Link></p>
                          <p> <Link className='nav-link text-primary fw-bold text-uppercase' to='/dashboard/addProduct'>Add A Products</Link></p>
                          <p> <Link className='nav-link text-primary fw-bold text-uppercase' to='/dashboard/manageAllOrders'>Manage All Orders</Link></p>
+                         <p> <Link className='nav-link text-primary fw-bold text-uppercase' to='/dashboard/manageItems'>Manage Item</Link></p>
                         </>
                     }
                     
