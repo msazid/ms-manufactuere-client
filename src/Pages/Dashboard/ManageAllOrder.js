@@ -15,8 +15,8 @@ const ManageAllOrder = () => {
 
 
     return (
-            <div className="container">
-                <table className="table table-hover overflow-scroll">
+            <div className="container ">
+                <table className="table">
                 <thead className='table-dark'>
                     <tr>
                         <th scope="col">Sl</th>

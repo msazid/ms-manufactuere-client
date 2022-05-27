@@ -17,7 +17,6 @@ const AllUsers = () => {
                         <th scope="col">SL</th>
                         <th scope="col">User Email</th>
                         <th scope="col">Make Admin</th>
-                        <th scope="col">Delete User</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,40 +24,39 @@ const AllUsers = () => {
                         users.map((user, index) =>
                             <tr>
                                 <th scope="row">{index + 1}</th>
-                                <td>{user.email}</td>
+                                <td className=' w-50'>{user.email}</td>
                                 <td>
                                     {user.role !== 'admin' && <button className='btn btn-sm btn-success'
                                         onClick={() => {
                                             fetch(`http://localhost:5000/users/admin/${user.email}`, {
-                                                method: 'PUT'
+                                                method: 'PUT',
+                                                headers: {
+                                                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                                                }
                                             })
-                                                .then(res =>{ 
-                                                    if(res.status === 403){
+                                                .then(res => {
+                                                    if (res.status === 403) {
                                                         Swal.fire({
-                                                            icon:'error',
-                                                            text:'Failed to Make an admin !'
+                                                            icon: 'error',
+                                                            text: 'Failed to Make an admin !'
                                                         })
                                                     }
-                                                   return res.json()})
+                                                    return res.json()
+                                                })
                                                 .then(data => {
-                                                    if (data.modifiedCount>0) {
-                                                        refetch()
+                                                    refetch()
+                                                    if (data.modifiedCount > 0) {
                                                         Swal.fire({
                                                             icon: 'success',
                                                             text: 'Successfully made an admin'
                                                         })
+                                                        
                                                     }
                                                 })
                                         }}
                                     >Make Admin</button>}
-                                    {user.role === 'admin' && <button className='btn-sm btn-light' onClick={() => {
-                                        Swal.fire({
-                                            icon: 'warning',
-                                            text: 'This user Already an admin'
-                                        })
-                                    }}  >Make Admin</button>}
+                                    {user.role === 'admin' && <button className='btn btn-secondary btn-sm disabled' disabled>Make Admin</button>}
                                 </td>
-                                <td><button className='btn btn-sm btn-danger'>Delete User</button></td>
                             </tr>
 
                         )

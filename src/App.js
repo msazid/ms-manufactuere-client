@@ -42,8 +42,6 @@ function App() {
             <Route path='addProduct' element={<RequireAdmin><AddProduct/></RequireAdmin>}></Route>
             <Route path='manageAllOrders' element={<RequireAdmin><ManageAllOrder/></RequireAdmin>}></Route>
           </Route>
-
-          
       </Routes>
     </div>
   );
