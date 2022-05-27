@@ -48,7 +48,7 @@ const ProductDetail = () => {
         console.log(ordered);
         if (data.target.quantity.value <= item.quantity || data.target.quantity.value >= item.minOrder) {
 
-            fetch('http://localhost:5000/ordered', {
+            fetch('http://localhost:5000/orders', {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"

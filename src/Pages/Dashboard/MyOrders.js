@@ -1,24 +1,35 @@
+import { signOut } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import auth from '../../Firebase/Firebase.init';
 import Loading from '../Shared/Loading';
 const MyOrders = () => {
-    const [user] = useAuthState(auth)
-    const email = user?.email;
     const [orders, setOrders] = useState([]);
+    const [user] = useAuthState(auth)
+    const navigate = useNavigate()
     useEffect(() => {
-       if(email){
-        fetch(`http://localhost:5000/ordered?email=${email}`, {
+       if(user){
+        fetch(`http://localhost:5000/ordering?email=${user?.email}`, {
             method: 'GET',
+            headers:{
+                'authorization':`Bearer ${localStorage.getItem('accessToken')}`
+            }
         })
-            .then(res => res.json())
+            .then(res => {
+                console.log('res', res);
+                if (res.status === 401 || res.status === 403) {
+                    signOut(auth);
+                    localStorage.removeItem('accessToken');
+                    navigate('/');
+                }
+                return res.json()})
             .then(data => { setOrders(data)})
        }
     }
-        , [email])
+        , [user,navigate])
     console.log(orders);
     return (
         <>
@@ -62,7 +73,7 @@ const MyOrders = () => {
                                                     'Your file has been deleted.',
                                                     'success'
                                                 )
-                                                fetch(`http://localhost:5000/ordered/${order._id}`, {
+                                                fetch(`http://localhost:5000/orders/${order._id}`, {
                                                     method: 'DELETE',
                                                     headers: {
                                                         "content-type": 'application/json'

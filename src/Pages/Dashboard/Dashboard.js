@@ -1,7 +1,12 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
+import auth from '../../Firebase/Firebase.init';
+import useAdmin from '../../Hooks/useAdmin';
 
 const Dashboard = () => {
+    const [user] = useAuthState(auth);
+    const [admin] = useAdmin(user);
     return (
         <div>
             <div className='border d-flex justify-content-end me-2'>
@@ -21,9 +26,15 @@ const Dashboard = () => {
                     <p>
                         <Link className='nav-link text-primary fw-bold text-uppercase' to='/dashboard'>Profile</Link>
                     </p>
-                    <p> <Link className='nav-link text-primary fw-bold text-uppercase' to='/dashboard/myorders'>My Orders</Link></p>
-                    <p> <Link className='nav-link text-primary fw-bold text-uppercase' to='/dashboard/addreview'>Add A review</Link></p>
-                    <p> <Link className='nav-link text-primary fw-bold text-uppercase' to='/dashboard/allUsers'>All Users</Link></p>
+                   {!admin && <p> <Link className='nav-link text-primary fw-bold text-uppercase' to='/dashboard/myorders'>My Orders</Link></p>}
+                   {!admin  && <p> <Link className='nav-link text-primary fw-bold text-uppercase' to='/dashboard/addreview'>Add A review</Link></p>}
+                    {admin &&
+                        <>
+                         <p> <Link className='nav-link text-primary fw-bold text-uppercase' to='/dashboard/allUsers'>All Users</Link></p>
+                         <p> <Link className='nav-link text-primary fw-bold text-uppercase' to='/dashboard/addProduct'>Add A Products</Link></p>
+                         <p> <Link className='nav-link text-primary fw-bold text-uppercase' to='/dashboard/manageAllOrders'>Manage All Orders</Link></p>
+                        </>
+                    }
                     
                 </div>
             </div>

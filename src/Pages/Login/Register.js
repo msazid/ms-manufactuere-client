@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import auth from '../../Firebase/Firebase.init';
+import useToken from '../../Hooks/useToken';
 import Loading from '../Shared/Loading';
 
 const Register = () => {
@@ -16,21 +17,23 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-    if(user || guser){
+
+    const [token] = useToken(user || guser);
+
+    if (token) {
         navigate('/')
     }
     if (loading || gLoading) {
         return <Loading />
     }
-    if(error||gerror){
+    if (error || gerror) {
         Swal.fire({
-            icon:'error',
-            title:'Something Wents wrong',
-            text:`${error.message || gerror.message}`
+            icon: 'error',
+            title: 'Something Wents wrong',
+            text: `${error.message || gerror.message}`
         })
     }
     const onSubmit = data => {
-        console.log(data.displayName, data.email, data.password)
         createUserWithEmailAndPassword(data.email, data.password);
     };
     return (

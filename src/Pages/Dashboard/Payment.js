@@ -18,7 +18,7 @@ const Payment = () => {
     //         .then(data => setOrder(data))
     // }, [url])
     const { data: order, isLoading, error, refetch } = useQuery(['order',id], () =>
-        fetch(`http://localhost:5000/ordered/${id}`)
+        fetch(`http://localhost:5000/orders/${id}`)
             .then(res => res.json())
     )
     if (isLoading) {

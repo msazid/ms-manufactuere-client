@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import auth from '../../Firebase/Firebase.init';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
@@ -6,6 +6,7 @@ import './Login.css'
 import Loading from '../Shared/Loading';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useToken from '../../Hooks/useToken';
 
 const Login = () => {
     const [
@@ -17,15 +18,20 @@ const Login = () => {
     const [signInWithGoogle, guser, gLoading, gerror] = useSignInWithGoogle(auth);
     const { register, handleSubmit } = useForm();
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+    const [token] = useToken(user || guser)
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || '/';
+    useEffect(()=>{
+        if(token){
+            navigate(from,{replace:true})
+        }
+    },[token,from,navigate])
+    
     if (loading || gLoading || sending) {
         return <Loading />
     }
-    if (user || guser){
-        navigate(from , {replace:true})
-    }
+
     if(error||gerror){
         Swal.fire({
             icon:'error',
