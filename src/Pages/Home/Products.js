@@ -13,7 +13,7 @@ const Products = () => {
         <section className='product-section py-5'>
             <div className='container'>
                 <h1 className='section-title py-4 text-center text-uppercase'>Available Products</h1>
-                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                     {
                         tools.slice(0,6).map(tool =>
                             <div className="col">
