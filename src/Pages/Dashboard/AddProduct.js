@@ -39,7 +39,7 @@ const AddProduct = (event) => {
 
     }
     return (
-        <div>
+        <div className='my-4'>
             <h2 className=''>Add New Product</h2>
             <form onSubmit={handleAddProduct}>
                 <input type="text" ref={pName} required placeholder='enter product name' className="form-control  mb-3" />
