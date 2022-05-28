@@ -45,9 +45,10 @@ const ProductDetail = () => {
             minOrder: item.minOrder,
             description: item.description
         }
-        const ordered = { email, productName, price, quantity, name, address, phone, totalPrice };
-        console.log(ordered);
-        if (data.target.quantity.value <= item.quantity || data.target.quantity.value >= item.minOrder) {
+
+        if (Quantity <= item.minOrder && Quantity >= item.minOrder) {
+            const ordered = { email, productName, price, quantity, name, address, phone, totalPrice };
+            console.log(ordered);
 
             fetch('https://ms-management124.herokuapp.com/orders', {
                 method: "POST",
@@ -73,8 +74,15 @@ const ProductDetail = () => {
                         icon: 'success',
                         text: 'Your Order successfully added please Check in to dashboard'
                     })
-                    data.reset();
+                    
                 })
+            data.reset();
+        }
+        else{
+            Swal.fire({
+                icon:'warning',
+                text:'Please input a valid quantity'
+            })
         }
     };
     return (
@@ -101,10 +109,10 @@ const ProductDetail = () => {
                             <input className="form-control  mb-3 p-2 " type="email" name='email' readOnly value={user?.email} />
                             <input className="form-control  mb-3 p-2 " type="text" name='productName' readOnly value={item.name} />
                             <input className="form-control  mb-3 p-2 " type="number" name='price' readOnly value={item.price} />
-                            <input className="form-control  mb-3 p-2 " type="number" name='quantity' placeholder="enter your product quantity" />
-                            <input className="form-control  mb-3 p-2 " type="text" name='name' placeholder="enter your name" />
-                            <textarea className="form-control  mb-3 p-2 " type="text" name='address' placeholder="address" />
-                            <input className="form-control mb-3 p-2 " type="number" name='phone' placeholder="phone number" />
+                            <input className="form-control  mb-3 p-2 " type="number" name='quantity' placeholder="enter your product quantity" required/>
+                            <input className="form-control  mb-3 p-2 " type="text" name='name' placeholder="enter your name" required/>
+                            <textarea className="form-control  mb-3 p-2 " type="text" name='address' placeholder="address" required/>
+                            <input className="form-control mb-3 p-2 " type="number" name='phone' placeholder="phone number" required/>
                             <input type="submit" className='btn btn-success' value='Order Now' />
                         </form>
 

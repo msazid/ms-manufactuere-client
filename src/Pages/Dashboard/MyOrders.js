@@ -36,7 +36,7 @@ const MyOrders = () => {
         <>
             <div>
                 <table className='table'>
-                    <thead className='thead-dark'>
+                    <thead className='table-dark'>
                         <tr>
                             <th scope="col">Sl</th>
                             <th scope="col">Product Name</th>
@@ -51,7 +51,7 @@ const MyOrders = () => {
                                 <th scope='row'>{index + 1}</th>
                                 <td>{order.productName}</td>
                                 <td>{order.quantity}</td>
-                                <td>{(order.totalPrice && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-warning btn-sm'>Pay</button></Link>}
+                                <td>{(order.totalPrice && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-success btn-sm'>Pay</button></Link>}
                                     {(order.totalPrice && order.paid) && <div>
                                         <p><span className='btn btn-secondary btn-sm disabled p-1'>Paid</span></p>
                                     </div>}</td>

@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 const Blogs = () => {
     return (
         <div className='container p-5 my-5' style={{boxShadow:'rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px'}}>
+            <h1>Click to read the blogs</h1>
             <button className='btn btn-danger d-block my-3 mx-auto' onClick={()=>{
                 Swal.fire({
                     icon: 'success',

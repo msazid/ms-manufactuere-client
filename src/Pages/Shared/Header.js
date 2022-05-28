@@ -21,12 +21,12 @@ const Header = () => {
         localStorage.removeItem('accessToken');
     }
     return (
-        <nav className = { menubar? "navbar sticky-top headerScroll active navbar-expand-lg": "navbar sticky-top headerScroll navbar-expand-lg navbar-light " }>
+        <nav className = { menubar? "navbar sticky-top headerScroll active navbar-expand-lg": "navbar sticky-top headerScroll navbar-expand-lg navbar-light" }>
             < div className = "container" >
                 <div style={{fontFamily:'playfair display',fontSize:'20px',fontStyle:'italic'}}>
                    MS Manufacture
                 </div>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <button className="navbar-toggler" style={{border:'1px solid'}} type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">

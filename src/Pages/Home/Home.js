@@ -1,4 +1,5 @@
 import React from 'react';
+import About from './About';
 import Brands from './Brands';
 import Featured from './Featured';
 import HeroSection from './HeroSection';
@@ -17,6 +18,7 @@ const Home = () => {
             <SpecialOffers/>
             <Summary/>
             <Reviews/>
+            <About/>
             <Brands/>
         </div>
     );
