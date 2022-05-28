@@ -2,7 +2,7 @@ import React from 'react';
 import './Loading.css'
 const Loading = () => {
     return (
-        <div className='d-flex align-items-center justify-content-center'>
+        <div className='d-flex align-items-center justify-content-center mx-auto'>
             <div className="jelly-triangle">
                 <div className="jelly-triangle__dot"></div>
                 <div className="jelly-triangle__traveler"></div>

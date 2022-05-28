@@ -34,13 +34,12 @@ const Payment = () => {
     //    console.log(order);
     return (
         <div className='container'>
-            <h5 className='text-info'>Please Pay For: {id}</h5>
-            <div className="card mb-5">
+            <div className="card my-5 py-4">
                 <h5>Hello, <span className='text-info'>{order.name}</span></h5>
                 <h5 className='card-title text-uppercase'>{order.productName}</h5>
                 <h5 className='card-text'> Please Pay: $ {order.totalPrice}</h5>
             </div>
-            <div className="card">
+            <div className="card p-5 mb-3">
                 <Elements stripe={stripePromise}>
                     <CheckoutForm order={order} />
                 </Elements>

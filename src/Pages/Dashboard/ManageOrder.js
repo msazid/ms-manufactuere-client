@@ -32,7 +32,11 @@ const ManageOrder = ({ order, index, refetch, setCancelModal }) => {
                     {
                         paid ? <>
                             {
-                                order.status ? <p className='text-success text-uppercase fw-bold'><span className='text-uppercase me-2 text-dark'>Product Status:</span> Shipped</p> : <button className="btn btn-xs btn-primary" onClick={() => updateProduct(_id)}>Change status</button>
+                                order.status ? <p className='text-success text-uppercase fw-bold'><span className='text-uppercase me-2 text-dark'>Product Status:</span> Shipped</p> :
+                                <>
+                                <p>This Order is payed the charges</p>
+                                <button className="btn btn-xs btn-primary" onClick={() => updateProduct(_id)}>Deliver</button>
+                                </>
                             }
                         </> : <p className='text-warning  fw-bold'>Pending.....</p>
                     }

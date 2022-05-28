@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './CSS/HeroSection.css'
 const HeroSection = () => {
 
@@ -20,7 +21,7 @@ const HeroSection = () => {
                             <p className='banner-title-3 text-center text-md-start'>SAVE UP TO $500</p>
                             <p></p>
                             <div className=' text-center text-md-start'>
-                                <button className="banner-button">Button</button>
+                                <Link style={{textDecoration:'none'}} to='/showAllItems' className="banner-button">Show All Products</Link>
                             </div>
                         </div>
                     </div>
@@ -34,9 +35,6 @@ const HeroSection = () => {
                             </h1>
                             <p className='banner-title-3 text-center text-md-end '>SAVE UP TO $500</p>
                             <p></p>
-                            <div className=' text-center text-md-end'>
-                                <button className="banner-button">Button</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -49,9 +47,6 @@ const HeroSection = () => {
                             </h1>
                             <p className='banner-title-3 text-center text-md-start'>SAVE UP TO $500</p>
                             <p></p>
-                            <div className=' text-center text-md-start'>
-                                <button className="banner-button">Button</button>
-                            </div>
                         </div>
                     </div>
                 </div>

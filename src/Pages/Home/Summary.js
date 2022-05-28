@@ -2,7 +2,7 @@ import React from 'react';
 
 const Summary = () => {
     return (
-        <div className='py-3' style={{ backgroundColor: '#EFEFEF' }}>
+        <div className='py-3 my-5' style={{ backgroundColor: '#EFEFEF' }}>
             <div className="container py-3">
                 <h1 className='text-center' style={{ textTransform: 'uppercase', fontFamily: 'lato', color: '#FF8C32' }}>Millions Business Traders Trust US</h1>
                 <p className='text-center' style={{ fontSize: '20px', textTransform: 'uppercase' }}>We are always look for our users expectations</p>

@@ -13,7 +13,7 @@ import brand5 from "../../Assets/brands/brand5.png"
 import brand6 from "../../Assets/brands/brand6.png"
 const Brands = () => {
     return (
-        <div className='my-3 py-3' style={{backgroundColor:'#F8F8F8'}}>
+        <div className='my-5 py-3' style={{backgroundColor:'#F8F8F8'}}>
             <h1 className='text-center text-uppercase'style={{color:'orange'}}>Our Supported Brands</h1>
              <Swiper
         slidesPerView={3}

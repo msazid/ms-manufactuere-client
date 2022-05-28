@@ -12,10 +12,10 @@ const Products = () => {
     return (
         <section className='product-section py-5'>
             <div className='container'>
-                <h1 className='section-title py-4 text-center'>Our Products</h1>
+                <h1 className='section-title py-4 text-center text-uppercase'>Available Products</h1>
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
                     {
-                        tools.slice(0, 6).map(tool =>
+                        tools.slice(0,8).map(tool =>
                             <div className="col">
                                 <div className="card border-0 tools h-100">
                                     <img src={tool.photo} className="tools-img card-img-top w-50 h-50 mx-auto" alt=".." />

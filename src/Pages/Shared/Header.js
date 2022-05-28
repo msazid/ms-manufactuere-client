@@ -45,7 +45,6 @@ const Header = () => {
                                         Profile
                                     </a>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><p className="dropdown-item">Display Name</p></li>
                                         <li><Link className="dropdown-item" to='/dashboard'>Dashboard</Link></li>
                                         <li><button className="dropdown-item" onClick={handleSignOut} href="#">Sign Out</button></li>
                                     </ul>

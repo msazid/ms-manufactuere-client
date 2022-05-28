@@ -59,9 +59,6 @@ const ProductDetail = () => {
                 .then(res => res.json())
                 .then(posted => {
                     console.log(posted);
-                    if (posted.acknowledged) {
-                        alert('Booked successfully');
-                    }
                 })
             fetch(`https://ms-management124.herokuapp.com/item/${id}`, {
                 method: 'PUT',
@@ -70,12 +67,13 @@ const ProductDetail = () => {
                 },
                 body: JSON.stringify(newQuantity)
             }).then(res => res.json())
-                .then(data => {
+                .then(result => {
                     setItem(newQuantity)
                     Swal.fire({
                         icon: 'success',
                         text: 'Your Order successfully added please Check in to dashboard'
                     })
+                    data.reset();
                 })
         }
     };
@@ -97,7 +95,7 @@ const ProductDetail = () => {
                 </div>
                 <div className="row">
 
-                    <div className="col-12 col-md-8 mx-auto">
+                    <div className="col-12 col-md-8 mx-auto my-5">
                         <h1 className='mb-4' style={{ fontFamily: 'lato', textAlign: 'center', fontSize: '30px', color: 'orange', textTransform: 'uppercase' }}>Order This product</h1>
                         <form onSubmit={onSubmit}>
                             <input className="form-control  mb-3 p-2 " type="email" name='email' readOnly value={user?.email} />

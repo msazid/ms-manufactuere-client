@@ -17,11 +17,11 @@ const SpecialOffers = () => {
                                     <p className="card-text text-center"></p>
                                 </div>
                                 <div  className="card px-2 py-1"style={{backgroundColor:'#461111'}}>
-                                    <h1 style={{color:'#EAFBEA', fontFamily:'lato',textTransform:"uppercase",fontSize:'20px'}} className=' text-center px-2'>25 <br /> Days</h1>
+                                    <h1 style={{color:'#EAFBEA', fontFamily:'lato',textTransform:"uppercase",fontSize:'20px'}} className=' text-center px-2'>25 <br /> Hr</h1>
                                     <p className="card-text text-center"></p>
                                 </div>
                                 <div  className="card px-2 py-1"style={{backgroundColor:'#461111'}}>
-                                    <h1 style={{color:'#EAFBEA', fontFamily:'lato',textTransform:"uppercase",fontSize:'20px'}} className=' text-center px-2'>25 <br /> Days</h1>
+                                    <h1 style={{color:'#EAFBEA', fontFamily:'lato',textTransform:"uppercase",fontSize:'20px'}} className=' text-center px-2'>5 <br /> Min</h1>
                                     <p className="card-text text-center"></p>
                                 </div>
                         
@@ -35,9 +35,11 @@ const SpecialOffers = () => {
                                 <li style={{color:'#EAFBEA',fontFamily:'lato',fontSize:'25px',fontWeight:'700',textTransform:'uppercase'}}>Lifetime membership</li>
                                 <li style={{color:'#EAFBEA',fontFamily:'lato',fontSize:'25px',fontWeight:'700',textTransform:'uppercase'}}>Unlimited Support</li>
                             </ul>
+                            <div  className='text-start'>
                             <button className='py-2 px-3' style={{border:'2px solid #EAFBEA',backgroundColor:'transparent',textTransform:'uppercase', color:'#EAFBEA'}}>
                                 Grab The Offer Fast
                             </button>
+                            </div>
                     </div>
                 </div>
             </div>

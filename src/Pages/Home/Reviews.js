@@ -6,7 +6,7 @@ import useReviews from "../../Hooks/useReviews";
 const Reviews = () => {
     const [reviews] = useReviews()
     return (
-     <div className="container">
+     <div className="container my-5">
          <h1>Our Customers Reviews</h1>
             <Carousel
         showArrows={true}
