@@ -2,7 +2,7 @@
 <h5>
   MS Manufactuere is simple MERT Stack website. Here you can find maufacturer tools.
 </h5>
-Live Site Link: 
+Live Site Link: https://ms-manufacturing.web.app/
 
 <h3>Framework/Library used:</h3>
 <li> firebase</li>
