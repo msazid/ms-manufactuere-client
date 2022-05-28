@@ -46,7 +46,7 @@ const ProductDetail = () => {
             description: item.description
         }
 
-        if (Quantity <= item.minOrder && Quantity >= item.minOrder) {
+        if (quantity <= item.quantity && quantity >= item.minOrder) {
             const ordered = { email, productName, price, quantity, name, address, phone, totalPrice };
             console.log(ordered);
 
